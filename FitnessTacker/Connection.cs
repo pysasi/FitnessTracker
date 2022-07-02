@@ -13,7 +13,7 @@ namespace FitnessTracker
 
         public Connection()
         {
-            connectionString = @"Server=tcp:ysasi-development.database.windows.net,1433;Initial Catalog=FitnessTracker;Persist Security Info=False;User ID=pysasi;Password=0101SRY@pay;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+            connectionString = @"Server=tcp:ysasi-development.database.windows.net,1433;Initial Catalog=FitnessTracker;Persist Security Info=False;User ID=pysasi;Password=;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
         }
 
         public string GetWorkoutType()
@@ -59,5 +59,29 @@ namespace FitnessTracker
             }
             return description;
         }
+
+        public List<string> FillWorkoutTypes()
+        {
+            List<string> workoutTypes = new List<string>();
+            using (SqlConnection connection = new SqlConnection(this.connectionString))
+            {
+                string query = "select workouttype from workouttype";
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            workoutTypes.Add(reader.GetValue(0).ToString());
+                        }
+
+                    }
+                }
+            }
+        
+            return workoutTypes;
+        }
+
     }
 }

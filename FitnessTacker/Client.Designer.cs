@@ -1,6 +1,6 @@
 ﻿using FitnessTracker;
 
-namespace FitnessTacker
+namespace FitnessTracker
 {
     partial class Client
     {

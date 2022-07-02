@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace FitnessTacker
+namespace FitnessTracker
 {
     class Program
     {
@@ -17,7 +17,7 @@ namespace FitnessTacker
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Client());
+            Application.Run(new LoginScreen());
         }
 
 
